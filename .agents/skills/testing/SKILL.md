@@ -1103,6 +1103,7 @@ expect(input).toHaveValue('text');
 - Never use `as any` to bypass TypeScript errors.
 - Prefer explicit types, inferred types, and `unknown` where appropriate.
 - Mock functions must use appropriate TypeScript signatures.
+- Type React mock props according to their real contracts: use `React.ReactNode` for renderable children and `React.ComponentProps` for existing components or DOM elements. `Record<string, unknown>` makes children `unknown`, which cannot be rendered as a `ReactNode`.
 - Test fixtures must match the actual types and contracts.
 - Use `@/*` imports for the configured `src/` alias.
 - Prefer inferred types from actual functions and schemas.
@@ -1121,8 +1122,8 @@ When generating or modifying tests:
 7. Write deterministic tests with meaningful names.
 8. Run the relevant test file.
 9. Run the broader test suite when appropriate.
-10. **Run ESLint checks** (`npm run lint` or project linter) on test files.
-11. **Run TypeScript checks** (`npx tsc --skipLibCheck --noEmit <testfile>`) to verify no TypeScript errors in test code.
+10. **Run ESLint on all created or modified test files with zero warnings allowed**, for example `npx eslint 'src/components/**/*.test.{ts,tsx}' --max-warnings 0`. Fix both errors and warnings; a normal ESLint exit code can be successful despite warnings. Remove unnecessary mocks, and prefer real components when practical rather than suppressing lint rules.
+11. **Run the project TypeScript check** (`npx tsc --noEmit --pretty false --incremental false`) so `tsconfig.json`, JSX settings, aliases, and all test files are included. Passing test execution or ESLint does not establish type correctness. Do not pass an individual source file to `tsc` in place of the project check, as that bypasses the project's configuration.
 12. Report exactly what was tested and any remaining limitations.
 
 Do not:
@@ -1131,8 +1132,8 @@ Do not:
 - Add dependencies without approval.
 - Modify production code just to make a test easier unless the task requires it.
 - Weaken assertions to make tests pass.
-- Claim successful validation without running the relevant commands.
-- **Mark work as complete if linting errors exist** in test files.
+- Claim successful validation without running the relevant commands and checking their exit statuses; explicitly report any remaining errors or blockers.
+- **Mark work as complete if linting errors or warnings exist** in created or modified test files.
 - **Mark work as complete if TypeScript errors specific to the test code exist** (dependency/configuration errors are acceptable, but test code must be error-free).
 - Use `as any` or `as unknown` to suppress TypeScript errors — fix the underlying type issue instead.
 - `as never` is acceptable when no other typing solution exists.
