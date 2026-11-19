@@ -22,7 +22,7 @@ export const FuncaoListTemplate = async () => {
   );
 };
 
-async function FuncaoDataTable() {
+export async function FuncaoDataTable() {
   const result = await getAll({
     modelKey: 'funcao',
     fields: ['nome'] as const,

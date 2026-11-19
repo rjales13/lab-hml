@@ -26,7 +26,7 @@ export const FechamentoListTemplate = ({ id }: iFechamentProps) => {
   );
 };
 
-async function FechamentoDataTable({ id }: iFechamentProps) {
+export async function FechamentoDataTable({ id }: iFechamentProps) {
   const isClosed = id.length === 24;
   const result = await getConsultorioDentista({ id, isClosed });
 

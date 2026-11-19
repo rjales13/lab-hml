@@ -22,7 +22,7 @@ export const ConsultorioListTemplate = () => {
   );
 };
 
-async function ConsultorioDataTable() {
+export async function ConsultorioDataTable() {
   const result = await getAll({
     modelKey: 'consultorio',
     fields: ['nome'] as const,

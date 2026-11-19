@@ -22,7 +22,7 @@ export const SecretariaListTemplate = () => {
   );
 };
 
-async function SecretariaDataTable() {
+export async function SecretariaDataTable() {
   const result = await getAll({
     modelKey: 'secretaria',
     fields: ['nome'] as const,

@@ -36,7 +36,7 @@ export const EntradaListTemplate = ({
   );
 };
 
-async function EntradaDataTable({
+export async function EntradaDataTable({
   filter,
   createdAtFilter,
 }: {

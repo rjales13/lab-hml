@@ -22,7 +22,7 @@ export const EspecialidadeListTemplate = async () => {
   );
 };
 
-async function EspecialidadeDataTable() {
+export async function EspecialidadeDataTable() {
   const result = await getAll({
     modelKey: 'especialidade',
     fields: ['nome'] as const,

@@ -22,7 +22,7 @@ export const ServicoListTemplate = () => {
   );
 };
 
-async function ServicoDataTable() {
+export async function ServicoDataTable() {
   const result = await getAll({
     modelKey: 'servico',
     fields: ['nome'] as const,

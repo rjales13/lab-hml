@@ -13,6 +13,14 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html'],
+      include: ['src/**/*.{ts,tsx}'],
+      exclude: [
+        'src/models/**',
+        'src/generated/**',
+        'src/**/*.d.ts',
+        'src/**/*.test.{ts,tsx}',
+        'src/**/*.spec.{ts,tsx}',
+      ],
     },
   },
 });

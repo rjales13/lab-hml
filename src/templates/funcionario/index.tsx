@@ -22,7 +22,7 @@ export const FuncionarioListTemplate = () => {
   );
 };
 
-async function FuncionarioDataTable() {
+export async function FuncionarioDataTable() {
   const result = await getAll({
     modelKey: 'funcionario',
     fields: ['nome'] as const,

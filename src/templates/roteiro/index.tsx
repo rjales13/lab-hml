@@ -39,7 +39,7 @@ export const RoteiroListTemplate = ({
   );
 };
 
-async function RoteiroDataTable({
+export async function RoteiroDataTable({
   filter,
   createdAtFilter,
 }: {
